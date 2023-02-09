@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'quiz_brain.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-
+int score = 0;
 QuizBrain quizBrain = QuizBrain();
 
 void main() {
@@ -32,11 +32,12 @@ class _QuizAppState extends State<QuizApp> {
 
         Alert(
           context: context,
-          title: 'Finished!',
-          desc: 'You\'ve reached the end of the quiz.',
+          title: 'FINISHED',
+          desc: 'Your Score Is $score!!',
         ).show();
 
         quizBrain.reset();
+        score = 0;
         scoreKeeper = [];
       }
       else{
@@ -45,6 +46,7 @@ class _QuizAppState extends State<QuizApp> {
             Icons.check,
             color: Colors.green,
           ));
+          score++;
         } else {
           scoreKeeper.add(Icon(
             Icons.close,
@@ -59,6 +61,8 @@ class _QuizAppState extends State<QuizApp> {
   }
 
   List<Icon> scoreKeeper = [];
+
+
 
   @override
   Widget build(BuildContext context) {
